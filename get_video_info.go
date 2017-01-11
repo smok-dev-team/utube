@@ -11,7 +11,8 @@ const (
 )
 
 func GetVideoInfoWithVideoId(videoId string) (metadata *VideoInfo, err error) {
-	result, err := http.DoGet(k_YOUTUBE_GET_VIDEO_INFO_URL, map[string]string{"video_id": videoId})
+	result, err := http.Request("GET", k_YOUTUBE_GET_VIDEO_INFO_URL, url.Values{"video_id": []string{videoId}})
+
 	if err != nil {
 		return nil, err
 	}
