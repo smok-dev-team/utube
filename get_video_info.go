@@ -2,7 +2,7 @@ package utube
 
 import (
 	"github.com/smartwalle/form"
-	"github.com/smartwalle/going/http"
+	"github.com/smartwalle/going/request"
 	"net/url"
 )
 
@@ -11,7 +11,7 @@ const (
 )
 
 func GetVideoInfoWithVideoId(videoId string) (metadata *VideoInfo, err error) {
-	result, err := http.Request("GET", k_YOUTUBE_GET_VIDEO_INFO_URL, url.Values{"video_id": []string{videoId}})
+	result, err := request.Request("GET", k_YOUTUBE_GET_VIDEO_INFO_URL, url.Values{"video_id": []string{videoId}})
 
 	if err != nil {
 		return nil, err
