@@ -190,36 +190,26 @@ type SearchResults struct {
 }
 
 type SearchResult struct {
-	Kind string `json:"kind"`
-	ETag string `json:"etag"`
-	Id   struct {
-		Kind       string `json:"kind"`
-		ChannelId  string `json:"channelId"`
-		VideoId    string `json:"videoId"`
-		PlaylistId string `json:"playlistId"`
-	} `json:"id"`
+	Kind    string         `json:"kind"`
+	ETag    string         `json:"etag"`
+	Id      *YoutubeId     `json:"id"`
 	Snippet *SearchSnippet `json:"snippet,omitempty"`
 }
 
 func (this *SearchResult) IsVideo() bool {
-	return this.Id.Kind == "youtube#video"
+	return this.Id.IsVideo()
 }
 
 func (this *SearchResult) IsChannel() bool {
-	return this.Id.Kind == "youtube#channel"
+	return this.Id.IsChannel()
 }
 
 func (this *SearchResult) IsPlaylist() bool {
-	return this.Id.Kind == "youtube#playlist"
+	return this.Id.IsPlaylist()
 }
 
 func (this *SearchResult) GetId() string {
-	if this.IsVideo() {
-		return this.Id.VideoId
-	} else if this.IsChannel() {
-		return this.Id.ChannelId
-	}
-	return this.Id.PlaylistId
+	return this.Id.GetId()
 }
 
 type SearchSnippet struct {
