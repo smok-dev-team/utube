@@ -10,7 +10,7 @@ const (
 	k_YOUTUBE_GET_VIDEO_INFO_URL = "https://www.youtube.com/get_video_info"
 )
 
-func GetVideoInfoWithVideoId(videoId string) (metadata *VideoInfo, err error) {
+func GetVideoInfoWithVideoId(videoId string) (videoInfo *VideoInfo, err error) {
 	result, err := request.Request("GET", k_YOUTUBE_GET_VIDEO_INFO_URL, url.Values{"video_id": []string{videoId}})
 
 	if err != nil {
@@ -18,18 +18,19 @@ func GetVideoInfoWithVideoId(videoId string) (metadata *VideoInfo, err error) {
 	}
 
 	var queryStr = string(result)
-	return VideoInfoWithQueryString(queryStr)
+	videoInfo, err = VideoInfoWithQueryString(queryStr)
+	return videoInfo, err
 }
 
-func VideoInfoWithQueryString(query string) (metadata *VideoInfo, err error) {
+func VideoInfoWithQueryString(query string) (videoInfo *VideoInfo, err error) {
 	param, err := url.ParseQuery(query)
 	if err != nil {
 		return nil, err
 	}
 
-	err = form.Bind(param, &metadata)
+	err = form.Bind(param, &videoInfo)
 	if err != nil {
 		return nil, err
 	}
-	return metadata, nil
+	return videoInfo, nil
 }
