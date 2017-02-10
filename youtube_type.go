@@ -18,9 +18,11 @@ type Thumbnail struct {
 }
 
 type Thumbnails struct {
-	Default *Thumbnails `json:"default"`
-	Medium  *Thumbnails `json:"medium"`
-	High    *Thumbnails `json:"high"`
+	Default  *Thumbnails `json:"default"`
+	Medium   *Thumbnails `json:"medium"`
+	High     *Thumbnails `json:"high"`
+	Standard *Thumbnails `json:"standard"`
+	Maxres   *Thumbnails `json:"maxres"`
 }
 
 type Localized struct {
