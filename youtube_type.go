@@ -7,8 +7,8 @@ type YoutubeParam interface {
 }
 
 type PageInfo struct {
-	TotalResults   int `json:"totalResults"`
-	ResultsPerPage int `json:"resultsPerPage"`
+	TotalResults   int64 `json:"totalResults"`
+	ResultsPerPage int64 `json:"resultsPerPage"`
 }
 
 type Thumbnail struct {

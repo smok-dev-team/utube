@@ -11,7 +11,7 @@ func TestYoutube_SearchVieoWithChannel(t *testing.T) {
 	var c = New("AIzaSyAeDwd1bXWY7Z86YxEqBTSOBNkbBfkM5i4")
 	var p = SearchParam{}
 	p.ChannelId = "UCBR8-60-B28hp2BmDPdntcQ "
-	var rs, err = c.SearchVideo(p)
+	var rs, err = c.SearchVideo("", p)
 	if err != nil {
 		fmt.Println(err)
 		return

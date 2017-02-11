@@ -1,11 +1,11 @@
 package utube
 
 import (
-	"net/http"
-	"strings"
+	"encoding/json"
 	"github.com/smartwalle/going/request"
 	"io/ioutil"
-	"encoding/json"
+	"net/http"
+	"strings"
 )
 
 const (
@@ -46,9 +46,9 @@ func (this *Youtube) BuildAPI(paths ...string) string {
 	return path
 }
 
-func (this *Youtube) doRequest(method, url string, param YoutubeParam, result interface{}) (err error) {
+func (this *Youtube) doRequest(method, url, accessToken string, param YoutubeParam, result interface{}) (err error) {
 	var (
-		req *http.Request
+		req  *http.Request
 		rep  *http.Response
 		data []byte
 	)
@@ -59,6 +59,9 @@ func (this *Youtube) doRequest(method, url string, param YoutubeParam, result in
 	req, err = request.NewRequest(method, url, v)
 	if err != nil {
 		return err
+	}
+	if accessToken != "" {
+		req.Header.Add("Authorization", "Bearer " + accessToken)
 	}
 
 	rep, err = http.DefaultClient.Do(req)
