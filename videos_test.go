@@ -16,6 +16,6 @@ func TestYoutube_GetVideos(t *testing.T) {
 		return
 	}
 	for _, v := range vs.Items {
-		fmt.Println(v.Id, v.Snippet.Title)
+		fmt.Println(v.Id, v.Snippet.Title, v.Snippet.Thumbnails.GetThumbnailURL())
 	}
 }

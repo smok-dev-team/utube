@@ -18,11 +18,26 @@ type Thumbnail struct {
 }
 
 type Thumbnails struct {
-	Default  *Thumbnails `json:"default"`
-	Medium   *Thumbnails `json:"medium"`
-	High     *Thumbnails `json:"high"`
-	Standard *Thumbnails `json:"standard"`
-	Maxres   *Thumbnails `json:"maxres"`
+	Default  *Thumbnail `json:"default"`
+	Medium   *Thumbnail `json:"medium"`
+	High     *Thumbnail `json:"high"`
+	Standard *Thumbnail `json:"standard"`
+	Maxres   *Thumbnail `json:"maxres"`
+}
+
+func (this *Thumbnails) GetThumbnailURL() string {
+	if this.Maxres != nil {
+		return this.Maxres.URL
+	} else if this.Standard != nil {
+		return this.Standard.URL
+	} else if this.High != nil {
+		return this.High.URL
+	} else if this.Medium != nil {
+		return this.Medium.URL
+	} else if this.Default != nil {
+		return this.Default.URL
+	}
+	return ""
 }
 
 type Localized struct {
@@ -30,26 +45,26 @@ type Localized struct {
 	Description string `json:"description"`
 }
 
-type YoutubeId struct {
+type ResourceId struct {
 	Kind       string `json:"kind"`
 	ChannelId  string `json:"channelId"`
 	VideoId    string `json:"videoId"`
 	PlaylistId string `json:"playlistId"`
 }
 
-func (this *YoutubeId) IsVideo() bool {
+func (this *ResourceId) IsVideo() bool {
 	return this.Kind == "youtube#video"
 }
 
-func (this *YoutubeId) IsChannel() bool {
+func (this *ResourceId) IsChannel() bool {
 	return this.Kind == "youtube#channel"
 }
 
-func (this *YoutubeId) IsPlaylist() bool {
+func (this *ResourceId) IsPlaylist() bool {
 	return this.Kind == "youtube#playlist"
 }
 
-func (this *YoutubeId) GetId() string {
+func (this *ResourceId) GetId() string {
 	if this.IsVideo() {
 		return this.VideoId
 	} else if this.IsChannel() {

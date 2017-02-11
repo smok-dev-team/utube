@@ -192,7 +192,7 @@ type SearchResults struct {
 type SearchResult struct {
 	Kind    string         `json:"kind"`
 	ETag    string         `json:"etag"`
-	Id      *YoutubeId     `json:"id"`
+	Id      *ResourceId     `json:"id"`
 	Snippet *SearchSnippet `json:"snippet,omitempty"`
 }
 

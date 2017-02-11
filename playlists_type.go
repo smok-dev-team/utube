@@ -175,5 +175,5 @@ type PlaylistItemSnippet struct {
 	Localized    *Localized  `json:"localized"`
 	PlaylistId   string      `json:"playlistId"`
 	Position     int         `json:"position"`
-	ResourceId   *YoutubeId  `json:"resourceId"`
+	ResourceId   *ResourceId  `json:"resourceId"`
 }
