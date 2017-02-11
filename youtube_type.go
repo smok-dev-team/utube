@@ -1,7 +1,6 @@
 package utube
 
 import (
-	"git.apache.org/thrift.git/lib/go/thrift"
 	"net/url"
 	"strings"
 )
