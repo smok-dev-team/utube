@@ -5,12 +5,13 @@ import (
 	"testing"
 )
 
-func TestYoutube_Search(t *testing.T) {
+// 搜索指定 Channel 下的视频
+func TestYoutube_SearchVieoWithChannel(t *testing.T) {
 	fmt.Println("=====Search=====")
 	var c = New("AIzaSyAeDwd1bXWY7Z86YxEqBTSOBNkbBfkM5i4")
 	var p = SearchParam{}
-	p.ChannelId = "UCgZd5ygXFoQry9KDGlddSBg"
-	var rs, err = c.SearchChannel(p)
+	p.ChannelId = "UCBR8-60-B28hp2BmDPdntcQ "
+	var rs, err = c.SearchVideo(p)
 	if err != nil {
 		fmt.Println(err)
 		return
