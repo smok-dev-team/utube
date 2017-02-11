@@ -8,7 +8,7 @@ import (
 // GetVideosParam https://developers.google.cn/youtube/v3/docs/videos/list
 type GetVideosParam struct {
 	// Required parameters
-	Part string
+	Part Part
 
 	// Filters (specify exactly one of the following parameters)
 	Chart    string
@@ -30,10 +30,7 @@ type GetVideosParam struct {
 func (this GetVideosParam) Params() url.Values {
 	var v = url.Values{}
 
-	if len(this.Part) == 0 {
-		this.Part = "snippet"
-	}
-	v.Add("part", this.Part)
+	v.Add("part", this.Part.Values())
 
 	if len(this.Chart) > 0 {
 		v.Add("chart", this.Chart)
@@ -115,7 +112,7 @@ type VideoSnippet struct {
 // GetVideoCategoriesParam https://developers.google.cn/youtube/v3/docs/videoCategories/list
 type GetVideoCategoriesParam struct {
 	// Required parameters
-	Part string
+	Part Part
 
 	// Filters (specify exactly one of the following parameters)
 	Id         string
@@ -128,10 +125,7 @@ type GetVideoCategoriesParam struct {
 func (this GetVideoCategoriesParam) Params() url.Values {
 	var v = url.Values{}
 
-	if len(this.Part) == 0 {
-		this.Part = "snippet"
-	}
-	v.Add("part", this.Part)
+	v.Add("part", this.Part.Values())
 
 	if len(this.Id) > 0 {
 		v.Add("id", this.Id)

@@ -1,9 +1,94 @@
 package utube
 
-import "net/url"
+import (
+	"git.apache.org/thrift.git/lib/go/thrift"
+	"net/url"
+	"strings"
+)
 
 type YoutubeParam interface {
 	Params() url.Values
+}
+
+type Part struct {
+	value []string
+}
+
+func (this *Part) ShowAuditDetails() *Part {
+	this.Append("auditDetails")
+	return this
+}
+
+func (this *Part) ShowBrandingSettings() *Part {
+	this.Append("brandingSettings")
+	return this
+}
+
+func (this *Part) ShowContentDetails() *Part {
+	this.Append("contentDetails")
+	return this
+}
+
+func (this *Part) ShowContentOwnerDetails() *Part {
+	this.Append("contentOwnerDetails")
+	return this
+}
+
+func (this *Part) ShowId() *Part {
+	this.Append("id")
+	return this
+}
+
+func (this *Part) ShowInVideoPromotion() *Part {
+	this.Append("invideoPromotion")
+	return this
+}
+
+func (this *Part) ShowLocalizations() *Part {
+	this.Append("localizations")
+	return this
+}
+
+func (this *Part) ShowPlayer() *Part {
+	this.Append("player")
+	return this
+}
+
+func (this *Part) ShowSnippet() *Part {
+	this.Append("snippet")
+	return this
+}
+
+func (this *Part) ShowStatistics() *Part {
+	this.Append("statistics")
+	return this
+}
+
+func (this *Part) ShowStatus() *Part {
+	this.Append("status")
+	return this
+}
+
+func (this *Part) ShowTopicDetails() *Part {
+	this.Append("topicDetails")
+	return this
+}
+
+func (this *Part) Append(v string) *Part {
+	if this.value == nil {
+		this.value = make([]string, 0, 0)
+	}
+	if v != "" {
+		this.value = append(this.value, v)
+	}
+	return this
+}
+
+func (this *Part) Values() string {
+	if len(this.value) == 0 {
+		this.ShowSnippet()
+	}
+	return strings.Join(this.value, ",")
 }
 
 type PageInfo struct {
@@ -71,4 +156,11 @@ func (this *ResourceId) GetId() string {
 		return this.ChannelId
 	}
 	return this.PlaylistId
+}
+
+type RelatedPlayLists struct {
+	Favorites    string `json:"favorites"`
+	Uploads      string `json:"uploads"`
+	WatchHistory string `json:"watchHistory"`
+	WatchLater   string `json:"watchLater"`
 }

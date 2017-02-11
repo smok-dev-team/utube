@@ -26,7 +26,7 @@ func TestYoutube_GetPlaylistItems(t *testing.T) {
 	fmt.Println("=====PlaylistItems=====")
 	var c = NewYoutube()
 	var p = GetPlaylistItemsParam{}
-	p.PlaylistId = "PLtCPCoZDB0vqC-EsAX3GVNW6N3bHLlaS8"
+	p.PlaylistId = "UUgZd5ygXFoQry9KDGlddSBg"
 	var ps, err = c.GetPlaylistItems(p)
 	if err != nil {
 		fmt.Println(err)

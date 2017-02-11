@@ -8,7 +8,7 @@ import (
 // GetPlaylistsParam https://developers.google.cn/youtube/v3/docs/playlists/list
 type GetPlaylistsParam struct {
 	// Required parameters
-	Part string
+	Part Part
 
 	// Filters (specify exactly one of the following parameters)
 	ChannelId string
@@ -27,10 +27,7 @@ type GetPlaylistsParam struct {
 func (this GetPlaylistsParam) Params() url.Values {
 	var v = url.Values{}
 
-	if len(this.Part) == 0 {
-		this.Part = "snippet"
-	}
-	v.Add("part", this.Part)
+	v.Add("part", this.Part.Values())
 
 	if len(this.ChannelId) > 0 {
 		v.Add("channelId", this.ChannelId)
@@ -99,7 +96,7 @@ type PlaylistSnippet struct {
 // https://developers.google.cn/youtube/v3/docs/playlistItems/list
 type GetPlaylistItemsParam struct {
 	// Required parameters
-	Part string
+	Part Part
 
 	// Filters (specify exactly one of the following parameters)
 	Id         string
@@ -116,10 +113,7 @@ type GetPlaylistItemsParam struct {
 func (this GetPlaylistItemsParam) Params() url.Values {
 	var v = url.Values{}
 
-	if len(this.Part) == 0 {
-		this.Part = "snippet"
-	}
-	v.Add("part", this.Part)
+	v.Add("part", this.Part.Values())
 
 	if len(this.Id) > 0 {
 		v.Add("id", this.Id)
@@ -159,10 +153,11 @@ type PlaylistItems struct {
 }
 
 type PlaylistItem struct {
-	Kind    string               `json:"kind"`
-	ETag    string               `json:"etag"`
-	Id      string               `json:"id"`
-	Snippet *PlaylistItemSnippet `json:"snippet,omitempty"`
+	Kind           string                      `json:"kind"`
+	ETag           string                      `json:"etag"`
+	Id             string                      `json:"id"`
+	Snippet        *PlaylistItemSnippet        `json:"snippet,omitempty"`
+	ContentDetails *PlaylistItemContentDetails `json:"contentDetails"`
 }
 
 type PlaylistItemSnippet struct {
@@ -175,5 +170,10 @@ type PlaylistItemSnippet struct {
 	Localized    *Localized  `json:"localized"`
 	PlaylistId   string      `json:"playlistId"`
 	Position     int         `json:"position"`
-	ResourceId   *ResourceId  `json:"resourceId"`
+	ResourceId   *ResourceId `json:"resourceId"`
+}
+
+type PlaylistItemContentDetails struct {
+	VideoId          string `json:"videoId"`
+	VideoPublishedAt string `json:"videoPublishedAt"`
 }

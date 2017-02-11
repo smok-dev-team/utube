@@ -7,6 +7,7 @@ import (
 
 type SearchParam struct {
 	// Required parameters
+	Part Part
 
 	// Filters (specify 0 or 1 of the following parameters)
 	ForContentOwner  int // authorized request
@@ -47,7 +48,7 @@ type SearchParam struct {
 func (this SearchParam) Params() url.Values {
 	var v = url.Values{}
 
-	v.Add("part", "snippet")
+	v.Add("part", this.Part.Values())
 
 	if this.ForContentOwner == 1 {
 		v.Add("forContentOwner", "true")

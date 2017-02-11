@@ -8,7 +8,7 @@ import (
 // GetChannelsParam https://developers.google.cn/youtube/v3/docs/channels/list
 type GetChannelsParam struct {
 	// Required parameters
-	Part string
+	Part Part
 
 	// Filters (specify exactly one of the following parameters)
 	CategoryId    string
@@ -29,10 +29,7 @@ type GetChannelsParam struct {
 func (this GetChannelsParam) Params() url.Values {
 	var v = url.Values{}
 
-	if len(this.Part) == 0 {
-		this.Part = "snippet"
-	}
-	v.Add("part", this.Part)
+	v.Add("part", this.Part.Values())
 
 	if len(this.CategoryId) > 0 {
 		v.Add("categoryId", this.CategoryId)
@@ -114,11 +111,7 @@ type ChannelSnippet struct {
 }
 
 type ChannelContentDetails struct {
-	RelatedPlayLists struct {
-		Uploads      string `json:"uploads"`
-		WatchHistory string `json:"watchHistory"`
-		WatchLater   string `json:"watchLater"`
-	} `json:"relatedPlaylists"`
+	RelatedPlayLists *RelatedPlayLists `json:"relatedPlaylists"`
 }
 
 type ChannelContentStatistics struct {
