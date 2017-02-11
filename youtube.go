@@ -13,16 +13,18 @@ const (
 )
 
 type Youtube struct {
-	key       string
-	apiDomain string
+	key         string
+	accessToken string
+	apiDomain   string
 }
 
-func New(key string) (client *Youtube) {
+func New(key, accessToken string) (client *Youtube) {
 	if len(key) == 0 {
 		return nil
 	}
 	client = &Youtube{}
 	client.key = key
+	client.accessToken = accessToken
 	client.apiDomain = k_YOUTUBE_API_URL
 	return client
 }
@@ -46,7 +48,7 @@ func (this *Youtube) BuildAPI(paths ...string) string {
 	return path
 }
 
-func (this *Youtube) doRequest(method, url, accessToken string, param YoutubeParam, result interface{}) (err error) {
+func (this *Youtube) doRequest(method, url string, param YoutubeParam, result interface{}) (err error) {
 	var (
 		req  *http.Request
 		rep  *http.Response
@@ -60,8 +62,8 @@ func (this *Youtube) doRequest(method, url, accessToken string, param YoutubePar
 	if err != nil {
 		return err
 	}
-	if accessToken != "" {
-		req.Header.Add("Authorization", "Bearer " + accessToken)
+	if this.accessToken != "" {
+		req.Header.Add("Authorization", "Bearer " + this.accessToken)
 	}
 
 	rep, err = http.DefaultClient.Do(req)
