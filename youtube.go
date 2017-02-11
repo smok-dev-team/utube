@@ -19,9 +19,6 @@ type Youtube struct {
 }
 
 func New(key, accessToken string) (client *Youtube) {
-	if len(key) == 0 {
-		return nil
-	}
 	client = &Youtube{}
 	client.key = key
 	client.accessToken = accessToken
@@ -56,7 +53,9 @@ func (this *Youtube) doRequest(method, url string, param YoutubeParam, result in
 	)
 
 	var v = param.Params()
-	v.Add("key", this.key)
+	if len(this.key) > 0 {
+		v.Add("key", this.key)
+	}
 
 	req, err = request.NewRequest(method, url, v)
 	if err != nil {
