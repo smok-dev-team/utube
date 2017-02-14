@@ -91,12 +91,15 @@ type Channels struct {
 }
 
 type Channel struct {
-	Kind           string                    `json:"kind"`
-	ETag           string                    `json:"etag"`
-	Id             string                    `json:"id"`
-	Snippet        *ChannelSnippet           `json:"snippet,omitempty"`
-	ContentDetails *ChannelContentDetails    `json:"contentDetails"`
-	Statistics     *ChannelContentStatistics `json:"statistics"`
+	Kind             string                    `json:"kind"`
+	ETag             string                    `json:"etag"`
+	Id               string                    `json:"id"`
+	Snippet          *ChannelSnippet           `json:"snippet,omitempty"`
+	ContentDetails   *ChannelContentDetails    `json:"contentDetails,omitempty"`
+	Statistics       *ChannelContentStatistics `json:"statistics,omitempty"`
+	TopicDetails     *TopicDetails             `json:"topicDetails,omitempty"`
+	Status           *ChannelStatus            `json:"status,omitempty"`
+	BrandingSettings *ChannelBrandingSettings  `json:"brandingSettings,omitempty"`
 }
 
 type ChannelSnippet struct {
@@ -104,14 +107,14 @@ type ChannelSnippet struct {
 	Description     string      `json:"description"`
 	CustomUrl       string      `json:"customUrl"`
 	PublishedAt     string      `json:"publishedAt"`
-	Thumbnails      *Thumbnails `json:"thumbnails"`
+	Thumbnails      *Thumbnails `json:"thumbnails,omitempty"`
 	DefaultLanguage string      `json:"defaultLanguage"`
-	Localized       *Localized  `json:"localized"`
+	Localized       *Localized  `json:"localized,omitempty"`
 	Country         string      `json:"country"`
 }
 
 type ChannelContentDetails struct {
-	RelatedPlayLists *RelatedPlayLists `json:"relatedPlaylists"`
+	RelatedPlayLists *RelatedPlayLists `json:"relatedPlaylists,omitempty"`
 }
 
 type ChannelContentStatistics struct {
@@ -120,4 +123,47 @@ type ChannelContentStatistics struct {
 	SubscriberCount       string `json:"subscriberCount"`
 	HiddenSubscriberCount bool   `json:"hiddenSubscriberCount"`
 	VideoCount            string `json:"videoCount"`
+}
+
+type ChannelStatus struct {
+	PrivacyStatus     string `json:"privacyStatus"`
+	IsLinked          bool   `json:"isLinked"`
+	LongUploadsStatus string `json:"longUploadsStatus"`
+}
+
+type ChannelBrandingSettings struct {
+	Channel *ChannelBrandingChannel `json:"channel,omitempty"`
+	Image   *ChannelBrandingImage   `json:"image,omitempty"`
+	Hints   []*ChannelHint          `json:"hints,omitempty"`
+}
+
+type ChannelBrandingChannel struct {
+	Title               string `json:"title"`
+	Description         string `json:"description"`
+	ShowRelatedChannels bool   `json:"showRelatedChannels"`
+	ShowBrowseView      bool   `json:"showBrowseView"`
+	UnsubscribedTrailer string `json:"unsubscribedTrailer"`
+	ProfileColor        string `json:"profileColor"`
+}
+
+type ChannelBrandingImage struct {
+	BannerImageUrl               string `json:"bannerImageUrl"`
+	BannerMobileImageUrl         string `json:"bannerMobileImageUrl"`
+	BannerTabletLowImageUrl      string `json:"bannerTabletLowImageUrl"`
+	BannerTabletImageUrl         string `json:"bannerTabletImageUrl"`
+	BannerTabletHdImageUrl       string `json:"bannerTabletHdImageUrl"`
+	BannerTabletExtraHdImageUrl  string `json:"bannerTabletExtraHdImageUrl"`
+	BannerMobileLowImageUrl      string `json:"bannerMobileLowImageUrl"`
+	BannerMobileMediumHdImageUrl string `json:"bannerMobileMediumHdImageUrl"`
+	BannerMobileHdImageUrl       string `json:"bannerMobileHdImageUrl"`
+	BannerMobileExtraHdImageUrl  string `json:"bannerMobileExtraHdImageUrl"`
+	BannerTvImageUrl             string `json:"bannerTvImageUrl"`
+	BannerTvLowImageUrl          string `json:"bannerTvLowImageUrl"`
+	BannerTvMediumImageUrl       string `json:"bannerTvMediumImageUrl"`
+	BannerTvHighImageUrl         string `json:"bannerTvHighImageUrl"`
+}
+
+type ChannelHint struct {
+	Property string `json:"property"`
+	Value    string `json:"value"`
 }

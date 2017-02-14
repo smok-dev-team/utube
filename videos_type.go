@@ -89,10 +89,15 @@ type Videos struct {
 }
 
 type Video struct {
-	Kind    string        `json:"kind"`
-	ETag    string        `json:"etag"`
-	Id      string        `json:"id"`
-	Snippet *VideoSnippet `json:"snippet,omitempty"`
+	Kind           string               `json:"kind"`
+	ETag           string               `json:"etag"`
+	Id             string               `json:"id"`
+	Snippet        *VideoSnippet        `json:"snippet,omitempty"`
+	ContentDetails *VideoContentDetails `json:"contentDetails,omitempty"`
+	Status         *VideoStatus         `json:"status,omitempty"`
+	Statistics     *VideoStatistics     `json:"statistics"`
+	Player         *Player              `json:"player"`
+	TopicDetails   *TopicDetails        `json:"topicDetails,omitempty"`
 }
 
 type VideoSnippet struct {
@@ -102,11 +107,41 @@ type VideoSnippet struct {
 	ChannelTitle         string      `json:"channelTitle"`
 	CategoryId           string      `json:"categoryId"`
 	PublishedAt          string      `json:"publishedAt"`
-	Thumbnails           *Thumbnails `json:"thumbnails"`
+	Thumbnails           *Thumbnails `json:"thumbnails,omitempty"`
 	Tags                 []string    `json:"tags"`
 	LiveBroadcastContent string      `json:"liveBroadcastContent"`
-	Localized            *Localized  `json:"localized"`
+	Localized            *Localized  `json:"localized,omitempty"`
 	DefaultAudioLanguage string      `json:"defaultAudioLanguage"`
+}
+
+type VideoContentDetails struct {
+	Duration          string             `json:"duration"`
+	Dimension         string             `json:"dimension"`
+	Definition        string             `json:"definition"`
+	Caption           string             `json:"caption"`
+	LicensedContent   bool               `json:"licensedContent"`
+	RegionRestriction *RegionRestriction `json:"regionRestriction,omitempty"`
+	Projection        string             `json:"projection"`
+}
+
+type RegionRestriction struct {
+	Blocked []string `json:"blocked"`
+}
+
+type VideoStatus struct {
+	UploadStatus        string `json:"uploadStatus"`
+	PrivacyStatus       string `json:"privacyStatus"`
+	License             string `json:"license"`
+	Embeddable          bool   `json:"embeddable"`
+	PublicStatsViewable bool   `json:"publicStatsViewable"`
+}
+
+type VideoStatistics struct {
+	ViewCount     string `json:"viewCount"`
+	LikeCount     string `json:"likeCount"`
+	DislikeCount  string `json:"dislikeCount"`
+	FavoriteCount string `json:"favoriteCount"`
+	CommentCount  string `json:"commentCount"`
 }
 
 // GetVideoCategoriesParam https://developers.google.cn/youtube/v3/docs/videoCategories/list

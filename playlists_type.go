@@ -77,10 +77,14 @@ type Playlists struct {
 }
 
 type Playlist struct {
-	Kind    string           `json:"kind"`
-	ETag    string           `json:"etag"`
-	Id      string           `json:"id"`
-	Snippet *PlaylistSnippet `json:"snippet,omitempty"`
+	Kind           string                  `json:"kind"`
+	ETag           string                  `json:"etag"`
+	Id             string                  `json:"id"`
+	Snippet        *PlaylistSnippet        `json:"snippet,omitempty"`
+	Status         *PlaylistSnippet        `json:"status"`
+	ContentDetails *PlaylistContentDetails `json:"contentDetails"`
+	Player         *Player                 `json:"player"`
+	Localizations  *Localizations          `json:"localizations"`
 }
 
 type PlaylistSnippet struct {
@@ -91,6 +95,14 @@ type PlaylistSnippet struct {
 	PublishedAt  string      `json:"publishedAt"`
 	Thumbnails   *Thumbnails `json:"thumbnails"`
 	Localized    *Localized  `json:"localized"`
+}
+
+type PlaylistStatus struct {
+	PrivacyStatus string `json:"privacyStatus"`
+}
+
+type PlaylistContentDetails struct {
+	ItemCount int `json:"itemCount"`
 }
 
 // https://developers.google.cn/youtube/v3/docs/playlistItems/list
@@ -157,7 +169,8 @@ type PlaylistItem struct {
 	ETag           string                      `json:"etag"`
 	Id             string                      `json:"id"`
 	Snippet        *PlaylistItemSnippet        `json:"snippet,omitempty"`
-	ContentDetails *PlaylistItemContentDetails `json:"contentDetails"`
+	ContentDetails *PlaylistItemContentDetails `json:"contentDetails,omitempty"`
+	Status         *PlaylistItemStatus         `json:"status,omitempty"`
 }
 
 type PlaylistItemSnippet struct {
@@ -176,4 +189,8 @@ type PlaylistItemSnippet struct {
 type PlaylistItemContentDetails struct {
 	VideoId          string `json:"videoId"`
 	VideoPublishedAt string `json:"videoPublishedAt"`
+}
+
+type PlaylistItemStatus struct {
+	PrivacyStatus string `json:"privacyStatus"`
 }

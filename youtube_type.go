@@ -163,3 +163,97 @@ type RelatedPlayLists struct {
 	WatchHistory string `json:"watchHistory"`
 	WatchLater   string `json:"watchLater"`
 }
+
+type Localization struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+}
+
+type Localizations struct {
+	HU     *Localization `json:"hu,omitempty"`
+	TH     *Localization `json:"th,omitempty"`
+	SR     *Localization `json:"sr,omitempty"`
+	ZU     *Localization `json:"zu,omitempty"`
+	PT_PT  *Localization `json:"pt-PT,omitempty"`
+	SW     *Localization `json:"sw,omitempty"`
+	TA     *Localization `json:"ta,omitempty"`
+	MK     *Localization `json:"mk,omitempty"`
+	KY     *Localization `json:"ky,omitempty"`
+	IW     *Localization `json:"iw,omitempty"`
+	PL     *Localization `json:"pl,omitempty"`
+	SR_XA  *Localization `json:"sr-XA,omitempty"`
+	PT     *Localization `json:"pt,omitempty"`
+	ZH_TW  *Localization `json:"zh-TW,omitempty"`
+	ES_419 *Localization `json:"es-419,omitempty"`
+	NL     *Localization `json:"nl,omitempty"`
+	ID     *Localization `json:"id,omitempty"`
+	SK     *Localization `json:"sk,omitempty"`
+	SL     *Localization `json:"sl,omitempty"`
+	HI     *Localization `json:"hi,omitempty"`
+	RU     *Localization `json:"ru,omitempty"`
+	MR     *Localization `json:"mr,omitempty"`
+	EL     *Localization `json:"el,omitempty"`
+	PA     *Localization `json:"pa,omitempty"`
+	LT     *Localization `json:"lt,omitempty"`
+	AR     *Localization `json:"ar,omitempty"`
+	FI     *Localization `json:"fi,omitempty"`
+	NE     *Localization `json:"ne,omitempty"`
+	Ro     *Localization `json:"ro,omitempty"`
+	KO     *Localization `json:"ko,omitempty"`
+	ML     *Localization `json:"ml,omitempty"`
+	BN     *Localization `json:"bn,omitempty"`
+	SV     *Localization `json:"sv,omitempty"`
+	UR     *Localization `json:"ur,omitempty"`
+	FIL    *Localization `json:"fil,omitempty"`
+	KK     *Localization `json:"kk,omitempty"`
+	SQ     *Localization `json:"sq,omitempty"`
+	LO     *Localization `json:"lo,omitempty"`
+	HY     *Localization `json:"hy,omitempty"`
+	CA     *Localization `json:"ca,omitempty"`
+	MS     *Localization `json:"ms,omitempty"`
+	BS     *Localization `json:"bs,omitempty"`
+	UK     *Localization `json:"uk,omitempty"`
+	MY     *Localization `json:"my,omitempty"`
+	KA     *Localization `json:"ka,omitempty"`
+	ET     *Localization `json:"et,omitempty"`
+	EN     *Localization `json:"en,omitempty"`
+	LV     *Localization `json:"lv,omitempty"`
+	AZ     *Localization `json:"az,omitempty"`
+	AM     *Localization `json:"am,omitempty"`
+	DA     *Localization `json:"da,omitempty"`
+	ZH_HK  *Localization `json:"zh-HK,omitempty"`
+	GL     *Localization `json:"gl,omitempty"`
+	DE     *Localization `json:"de,omitempty"`
+	VI     *Localization `json:"vi,omitempty"`
+	UZ     *Localization `json:"uz,omitempty"`
+	FR_CA  *Localization `json:"fr-CA,omitempty"`
+	ZH_CN  *Localization `json:"zh-CN,omitempty"`
+	FA     *Localization `json:"fa,omitempty"`
+	TE     *Localization `json:"te,omitempty"`
+	CS     *Localization `json:"cs,omitempty"`
+	GU     *Localization `json:"gu,omitempty"`
+	EU     *Localization `json:"eu,omitempty"`
+	NO     *Localization `json:"no,omitempty"`
+	AF     *Localization `json:"af,omitempty"`
+	KM     *Localization `json:"km,omitempty"`
+	FR     *Localization `json:"fr,omitempty"`
+	TR     *Localization `json:"tr,omitempty"`
+	BG     *Localization `json:"bg,omitempty"`
+	HR     *Localization `json:"hr,omitempty"`
+	IS     *Localization `json:"is,omitempty"`
+	JA     *Localization `json:"ja,omitempty"`
+	MN     *Localization `json:"mn,omitempty"`
+	KN     *Localization `json:"kn,omitempty"`
+	EN_GB  *Localization `json:"en-GB,omitempty"`
+	SI     *Localization `json:"si,omitempty"`
+	IT     *Localization `json:"it,omitempty"`
+}
+
+type Player struct {
+	EmbedHtml string `json:"embedHtml"`
+}
+
+type TopicDetails struct {
+	TopicIds         []string `json:"topicIds,omitempty"`
+	RelevantTopicIds []string `json:"relevantTopicIds,omitempty"`
+}
