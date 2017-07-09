@@ -1,9 +1,7 @@
 package utube
 
 import (
-	"encoding/json"
 	"github.com/smartwalle/going/request"
-	"io/ioutil"
 	"net/http"
 	"strings"
 )
@@ -46,51 +44,67 @@ func (this *Youtube) BuildAPI(paths ...string) string {
 }
 
 func (this *Youtube) doRequest(method, url string, param YoutubeParam, result interface{}) (err error) {
-	var (
-		req  *http.Request
-		rep  *http.Response
-		data []byte
-	)
+	//var (
+		//req  *http.Request
+		//rep  *http.Response
+		//data []byte
+	//)
 
 	var v = param.Params()
 	if len(this.key) > 0 {
 		v.Add("key", this.key)
 	}
 
-	req, err = request.NewRequest(method, url, v)
-	if err != nil {
-		return err
-	}
+	req := request.NewRequest(method, url)
+	req.SetParams(v)
 	if this.accessToken != "" {
-		req.Header.Add("Authorization", "Bearer " + this.accessToken)
+		req.SetHeader("Authorization", "Bearer " + this.accessToken)
 	}
 
-	rep, err = http.DefaultClient.Do(req)
-	if err != nil {
-		return err
-	}
-	defer rep.Body.Close()
+	rep := req.Exec()
 
-	data, err = ioutil.ReadAll(rep.Body)
-	if err != nil {
-		return err
-	}
+	//req, err = request.NewRequest(method, url, v)
+	//if err != nil {
+	//	return err
+	//}
+	//if this.accessToken != "" {
+	//	req.Header.Add("Authorization", "Bearer " + this.accessToken)
+	//}
+	//
+	//rep, err = http.DefaultClient.Do(req)
+	//if err != nil {
+	//	return err
+	//}
+	//defer rep.Body.Close()
+	//
+	//data, err = ioutil.ReadAll(rep.Body)
+	//if err != nil {
+	//	return err
+	//}
 
 	switch rep.StatusCode {
 	case http.StatusOK:
 		if result != nil {
-			if err = json.Unmarshal(data, result); err != nil {
+			//if err = json.Unmarshal(data, result); err != nil {
+			//	return err
+			//}
+			if err = rep.UnmarshalJSON(result); err != nil {
 				return err
 			}
 		}
 	default:
 		var e = &ResponseError{}
-		e.Response = rep
-		if len(data) > 0 {
-			if err = json.Unmarshal(data, e); err != nil {
+		e.Response = rep.Response
+		if len(rep.MustBytes()) > 0 {
+			if err = rep.UnmarshalJSON(e); err != nil {
 				return err
 			}
 		}
+		//if len(data) > 0 {
+		//	if err = json.Unmarshal(data, e); err != nil {
+		//		return err
+		//	}
+		//}
 		return e
 	}
 	return err

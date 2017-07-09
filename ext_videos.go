@@ -11,13 +11,16 @@ const (
 )
 
 func GetVideoInfoWithVideoId(videoId string) (videoInfo *VideoInfo, err error) {
-	result, err := request.Request("GET", k_YOUTUBE_GET_VIDEO_INFO_URL, url.Values{"video_id": []string{videoId}})
+	var req = request.NewRequest("GET", k_YOUTUBE_GET_VIDEO_INFO_URL)
+	req.SetParam("video_id", videoId)
 
-	if err != nil {
-		return nil, err
-	}
+	//result, err := request.Request("GET", k_YOUTUBE_GET_VIDEO_INFO_URL, url.Values{"video_id": []string{videoId}})
+	//if err != nil {
+	//	return nil, err
+	//}
+	var rep = req.Exec()
 
-	var queryStr = string(result)
+	var queryStr = rep.MustString()
 	videoInfo, err = VideoInfoWithQueryString(queryStr)
 	return videoInfo, err
 }
