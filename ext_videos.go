@@ -2,7 +2,7 @@ package utube
 
 import (
 	"github.com/smartwalle/form"
-	"github.com/smartwalle/going/request"
+	"github.com/smartwalle/nox"
 	"net/url"
 )
 
@@ -11,7 +11,7 @@ const (
 )
 
 func GetVideoInfoWithVideoId(videoId string) (videoInfo *VideoInfo, err error) {
-	var req = request.NewRequest("GET", k_YOUTUBE_GET_VIDEO_INFO_URL)
+	var req = nox.NewRequest("GET", k_YOUTUBE_GET_VIDEO_INFO_URL)
 	req.SetParam("video_id", videoId)
 
 	//result, err := request.Request("GET", k_YOUTUBE_GET_VIDEO_INFO_URL, url.Values{"video_id": []string{videoId}})
