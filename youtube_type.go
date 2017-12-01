@@ -73,6 +73,11 @@ func (this *Part) ShowTopicDetails() *Part {
 	return this
 }
 
+func (this *Part) ShowReplies() *Part {
+	this.Append("replies")
+	return this
+}
+
 func (this *Part) Append(v string) *Part {
 	if this.value == nil {
 		this.value = make([]string, 0, 0)
