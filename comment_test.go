@@ -7,7 +7,7 @@ import (
 
 func TestYoutube_GetCommentThreads(t *testing.T) {
 	fmt.Println("=====CommentThreads=====")
-	var c = NewYoutube()
+	var c = GetYoutube()
 	var p = GetCommentThreadsParam{}
 	p.Part.ShowSnippet()
 	p.Part.ShowReplies()
@@ -24,7 +24,7 @@ func TestYoutube_GetCommentThreads(t *testing.T) {
 
 func TestYoutube_GetComments(t *testing.T) {
 	fmt.Println("=====Comments=====")
-	var c = NewYoutube()
+	var c = GetYoutube()
 	var p = GetCommentsParams{}
 	p.Part.ShowSnippet()
 	p.AppendId("z23libhysym5wndzr04t1aokgeo4euvmqqjrd42ynhe4bk0h00410")
