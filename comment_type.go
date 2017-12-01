@@ -3,6 +3,7 @@ package utube
 import (
 	"fmt"
 	"net/url"
+	"strings"
 )
 
 // https://developers.google.cn/youtube/v3/docs/commentThreads/list
@@ -72,6 +73,52 @@ func (this GetCommentThreadsParam) Params() url.Values {
 	return v
 }
 
+// https://developers.google.cn/youtube/v3/docs/comments/list
+type GetCommentsParams struct {
+	// Required parameters
+	Part Part
+
+	// Filters (specify exactly one of the following parameters)
+	Ids      []string
+	ParentId string
+
+	// Optional parameters
+	MaxResults int
+	PageToken  string
+	TextFormat string
+}
+
+func (this *GetCommentsParams) AppendId(id string) {
+	this.Ids = append(this.Ids, id)
+}
+
+func (this GetCommentsParams) Params() url.Values {
+	var v = url.Values{}
+
+	v.Add("part", this.Part.Values())
+
+	if len(this.ParentId) > 0 {
+		v.Add("parentId", this.ParentId)
+	}
+
+	if len(this.Ids) > 0 {
+		v.Add("id", strings.Join(this.Ids, ","))
+	}
+
+	if this.MaxResults > 0 {
+		v.Add("maxResults", fmt.Sprintf("%d", this.MaxResults))
+	}
+
+	if len(this.PageToken) > 0 {
+		v.Add("pageToken", this.PageToken)
+	}
+
+	if len(this.TextFormat) > 0 {
+		v.Add("textFormat", this.TextFormat)
+	}
+	return v
+}
+
 type CommentThreads struct {
 	Kind          string           `json:"kind"`
 	ETag          string           `json:"etag"`
@@ -95,6 +142,13 @@ type CommentThreadSnippet struct {
 	TotalReplyCount int      `json:"totalReplyCount"`
 	IsPublic        bool     `json:"isPublic"`
 	TopLevelComment *Comment `json:"topLevelComment,omitempty"`
+}
+
+type Comments struct {
+	Kind  string     `json:"kind"`
+	ETag  string     `json:"etag"`
+	Id    string     `json:"id"`
+	Items []*Comment `json:"items"`
 }
 
 type Comment struct {
