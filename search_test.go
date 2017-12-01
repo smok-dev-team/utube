@@ -6,7 +6,7 @@ import (
 )
 
 // 搜索指定 Channel 下的视频
-func TestYoutube_SearchVieoWithChannel(t *testing.T) {
+func TestYoutube_SearchVideoWithChannel(t *testing.T) {
 	fmt.Println("=====Search=====")
 	var c = NewYoutube()
 	var p = SearchParam{}
