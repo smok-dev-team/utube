@@ -7,7 +7,7 @@ import (
 
 func TestYoutube_GetVideos(t *testing.T) {
 	fmt.Println("=====Videos=====")
-	var c = NewYoutube()
+	var c = GetYoutube()
 	var p = GetVideosParam{}
 	p.Chart = "mostPopular"
 	var vs, err = c.GetVideos(p)
@@ -22,7 +22,7 @@ func TestYoutube_GetVideos(t *testing.T) {
 
 func TestYoutube_GetVideoCategories(t *testing.T) {
 	fmt.Println("=====Video Categories=====")
-	var c = NewYoutube()
+	var c = GetYoutube()
 	var p = GetVideoCategoriesParam{}
 	p.RegionCode = "US"
 	p.HL = "zh_CN"

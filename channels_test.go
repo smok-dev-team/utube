@@ -3,15 +3,24 @@ package utube
 import (
 	"testing"
 	"fmt"
+	"os"
 )
 
-func NewYoutube() *Youtube {
-	return New("AIzaSyAeDwd1bXWY7Z86YxEqBTSOBNkbBfkM5i4", "")
+var client *Youtube
+
+func TestMain(m *testing.M) {
+	client = New("AIzaSyAeDwd1bXWY7Z86YxEqBTSOBNkbBfkM5i4", "")
+	var exitCode = m.Run()
+	os.Exit(exitCode)
+}
+
+func GetYoutube() *Youtube {
+	return client
 }
 
 func TestYoutube_GetChannels(t *testing.T) {
 	fmt.Println("=====Channels=====")
-	var c = NewYoutube()
+	var c = GetYoutube()
 	var p = GetChannelsParam{}
 	p.ForUsername = "RiPTrippers"
 	var rs, err = c.GetChannels(p)

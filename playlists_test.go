@@ -7,7 +7,7 @@ import (
 
 func TestYoutube_Playlists(t *testing.T) {
 	fmt.Println("=====Playlists=====")
-	var c = NewYoutube()
+	var c = GetYoutube()
 	var p = GetPlaylistsParam{}
 	p.ChannelId = "UCv2LIk0KDlM413MIt8lt9fg"
 	var ps, err = c.GetPlaylists(p)
@@ -24,7 +24,7 @@ func TestYoutube_Playlists(t *testing.T) {
 
 func TestYoutube_GetPlaylistItems(t *testing.T) {
 	fmt.Println("=====PlaylistItems=====")
-	var c = NewYoutube()
+	var c = GetYoutube()
 	var p = GetPlaylistItemsParam{}
 	p.PlaylistId = "UUgZd5ygXFoQry9KDGlddSBg"
 	var ps, err = c.GetPlaylistItems(p)
