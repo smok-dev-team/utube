@@ -1,7 +1,7 @@
 package utube
 
 import (
-	"github.com/smartwalle/nox"
+	"github.com/smartwalle/ngx"
 	"net/http"
 	"strings"
 )
@@ -55,7 +55,7 @@ func (this *Youtube) doRequest(method, url string, param YoutubeParam, result in
 		v.Add("key", this.key)
 	}
 
-	req := nox.NewRequest(method, url)
+	req := ngx.NewRequest(method, url)
 	req.SetParams(v)
 	if this.accessToken != "" {
 		req.SetHeader("Authorization", "Bearer " + this.accessToken)
