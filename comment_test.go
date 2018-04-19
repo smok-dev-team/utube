@@ -1,8 +1,8 @@
 package utube
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestYoutube_GetCommentThreads(t *testing.T) {

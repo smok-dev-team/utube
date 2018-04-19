@@ -1,8 +1,8 @@
 package utube
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestGetVideoInfoWithVideoId(t *testing.T) {

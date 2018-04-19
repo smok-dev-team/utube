@@ -1,9 +1,9 @@
 package utube
 
 import (
-	"testing"
 	"fmt"
 	"os"
+	"testing"
 )
 
 var client *Youtube

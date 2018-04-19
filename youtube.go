@@ -45,9 +45,9 @@ func (this *Youtube) BuildAPI(paths ...string) string {
 
 func (this *Youtube) doRequest(method, url string, param YoutubeParam, result interface{}) (err error) {
 	//var (
-		//req  *http.Request
-		//rep  *http.Response
-		//data []byte
+	//req  *http.Request
+	//rep  *http.Response
+	//data []byte
 	//)
 
 	var v = param.Params()
@@ -58,7 +58,7 @@ func (this *Youtube) doRequest(method, url string, param YoutubeParam, result in
 	req := ngx.NewRequest(method, url)
 	req.SetParams(v)
 	if this.accessToken != "" {
-		req.SetHeader("Authorization", "Bearer " + this.accessToken)
+		req.SetHeader("Authorization", "Bearer "+this.accessToken)
 	}
 
 	rep := req.Exec()

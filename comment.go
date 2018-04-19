@@ -2,7 +2,7 @@ package utube
 
 const (
 	k_COMMENT_THREADS_API = "/v3/commentThreads"
-	k_COMMENTS_API = "/v3/comments"
+	k_COMMENTS_API        = "/v3/comments"
 )
 
 func (this *Youtube) GetCommentThreads(param GetCommentThreadsParam) (results *CommentThreads, err error) {
