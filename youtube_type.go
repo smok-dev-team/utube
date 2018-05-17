@@ -163,6 +163,7 @@ func (this *ResourceId) GetId() string {
 }
 
 type RelatedPlayLists struct {
+	Likes        string `json:"likes"`
 	Favorites    string `json:"favorites"`
 	Uploads      string `json:"uploads"`
 	WatchHistory string `json:"watchHistory"`
