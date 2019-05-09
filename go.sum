@@ -1,0 +1,6 @@
+github.com/smartwalle/binding v1.0.0 h1:jFZbkKN19zP6dZ0i7y/RNGRwDPvdN6tXbBp4B5iSly8=
+github.com/smartwalle/binding v1.0.0/go.mod h1:mLYtdHR4cKfwQv+CMYBOXBJjQjQMjqga/XcCDWWiWGk=
+github.com/smartwalle/form v1.0.0 h1:0tC3l+wrd1NoTKPZ7nX3RTHEjs9SKR4fr1j7CrdmyxU=
+github.com/smartwalle/form v1.0.0/go.mod h1:Y3hwTe7y3YSYoz+TMdhlwI3V3eVRdCI0JC34L7ibXhE=
+github.com/smartwalle/ngx v1.0.0 h1:fBCvRGNM88s6quNn3fi65sFiEDQLaWU+w4MdVC7+fGU=
+github.com/smartwalle/ngx v1.0.0/go.mod h1:ml3CEnDnA94rNqRC9/lbflZNevlW+Cbgv6Gp8WDy6AU=

@@ -2,11 +2,11 @@ package utube
 
 import (
 	"fmt"
-	"net/http"
+	"github.com/smartwalle/ngx"
 )
 
 type ResponseError struct {
-	Response *http.Response `json:"-"`
+	Response *ngx.Response `json:"-"`
 	RepError struct {
 		Errors  []*ErrorInfo `json:"errors"`
 		Code    int          `json:"code"`
@@ -15,7 +15,7 @@ type ResponseError struct {
 }
 
 func (this *ResponseError) Error() string {
-	return fmt.Sprintf("[%s]%d %s [Message]%s", this.Response.Request.Method, this.Response.StatusCode, this.Response.Request.URL, this.RepError.Message)
+	return fmt.Sprintf("[%s]%d %s [Message]%s", this.Response.Request().Method, this.Response.StatusCode(), this.Response.Request().URL, this.RepError.Message)
 }
 
 type ErrorInfo struct {

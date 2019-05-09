@@ -82,7 +82,7 @@ func (this *Youtube) doRequest(method, url string, param YoutubeParam, result in
 	//	return err
 	//}
 
-	switch rep.StatusCode {
+	switch rep.StatusCode() {
 	case http.StatusOK:
 		if result != nil {
 			//if err = json.Unmarshal(data, result); err != nil {
@@ -94,7 +94,7 @@ func (this *Youtube) doRequest(method, url string, param YoutubeParam, result in
 		}
 	default:
 		var e = &ResponseError{}
-		e.Response = rep.Response
+		e.Response = rep
 		if len(rep.MustBytes()) > 0 {
 			if err = rep.UnmarshalJSON(e); err != nil {
 				return err
