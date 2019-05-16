@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-var client *Youtube
+var client *Client
 
 func TestMain(m *testing.M) {
 	client = New("AIzaSyAeDwd1bXWY7Z86YxEqBTSOBNkbBfkM5i4", "")
@@ -14,7 +14,7 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
-func GetYoutube() *Youtube {
+func GetYoutube() *Client {
 	return client
 }
 

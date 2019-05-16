@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-type YoutubeParam interface {
+type Param interface {
 	Params() url.Values
 }
 

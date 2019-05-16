@@ -10,21 +10,21 @@ const (
 	k_YOUTUBE_API_URL = "https://www.googleapis.com/youtube"
 )
 
-type Youtube struct {
+type Client struct {
 	key         string
 	accessToken string
 	apiDomain   string
 }
 
-func New(key, accessToken string) (client *Youtube) {
-	client = &Youtube{}
+func New(key, accessToken string) (client *Client) {
+	client = &Client{}
 	client.key = key
 	client.accessToken = accessToken
 	client.apiDomain = k_YOUTUBE_API_URL
 	return client
 }
 
-func (this *Youtube) BuildAPI(paths ...string) string {
+func (this *Client) BuildAPI(paths ...string) string {
 	var path = this.apiDomain
 	for _, p := range paths {
 		p = strings.TrimSpace(p)
@@ -43,7 +43,7 @@ func (this *Youtube) BuildAPI(paths ...string) string {
 	return path
 }
 
-func (this *Youtube) doRequest(method, url string, param YoutubeParam, result interface{}) (err error) {
+func (this *Client) doRequest(method, url string, param Param, result interface{}) (err error) {
 	//var (
 	//req  *http.Request
 	//rep  *http.Response

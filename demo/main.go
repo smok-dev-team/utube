@@ -1,15 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"github.com/smartwalle/utube"
-	"github.com/smartwalle/dbs"
-	_ "github.com/go-sql-driver/mysql"
 	"database/sql"
+	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/smartwalle/dbs"
+	"github.com/smartwalle/utube"
 	"time"
 )
 
-var client *utube.Youtube
+var client *utube.Client
 var db *sql.DB
 
 func init() {
@@ -27,7 +27,7 @@ func main() {
 
 func getVideos(channelId string) {
 	playListId, err := getPlayListIdWithChannel(channelId)
-	if err  != nil {
+	if err != nil {
 		return
 	}
 
@@ -81,7 +81,6 @@ func getPlayListItemList(playListId, nextPageToken string) (err error) {
 
 	return err
 }
-
 
 func SearchChannel(keyword, nextPageToken string) {
 	var p = utube.SearchParam{}
