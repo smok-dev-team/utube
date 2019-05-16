@@ -1,5 +1,9 @@
+github.com/go-sql-driver/mysql v1.4.1 h1:g24URVg0OFbNUTx9qqY1IRZ9D9z3iPyi5zKhQZpNwpA=
+github.com/go-sql-driver/mysql v1.4.1/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=
 github.com/smartwalle/binding v1.0.0 h1:jFZbkKN19zP6dZ0i7y/RNGRwDPvdN6tXbBp4B5iSly8=
 github.com/smartwalle/binding v1.0.0/go.mod h1:mLYtdHR4cKfwQv+CMYBOXBJjQjQMjqga/XcCDWWiWGk=
+github.com/smartwalle/dbs v1.0.0 h1:4UzPq/wfzDVZFpBKXO5yckGqOdhVX8RZ6qv8nUCpGC8=
+github.com/smartwalle/dbs v1.0.0/go.mod h1:sTVYj2+GAmxGxTF88LR38dc57SA5Pr9/Uk2EPztLidA=
 github.com/smartwalle/form v1.0.0 h1:0tC3l+wrd1NoTKPZ7nX3RTHEjs9SKR4fr1j7CrdmyxU=
 github.com/smartwalle/form v1.0.0/go.mod h1:Y3hwTe7y3YSYoz+TMdhlwI3V3eVRdCI0JC34L7ibXhE=
 github.com/smartwalle/ngx v1.0.0 h1:fBCvRGNM88s6quNn3fi65sFiEDQLaWU+w4MdVC7+fGU=
