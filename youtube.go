@@ -1,7 +1,7 @@
 package utube
 
 import (
-	"github.com/smartwalle/ngx"
+	"github.com/smok-dev-team/ngx"
 	"net/http"
 	"strings"
 )

@@ -1,10 +1,8 @@
-module github.com/smartwalle/utube
+module github.com/smok-dev-team/utube
 
 go 1.12
 
 require (
-	github.com/go-sql-driver/mysql v1.4.1 // indirect
-	github.com/smartwalle/dbs v1.0.0 // indirect
-	github.com/smartwalle/form v1.0.0
-	github.com/smartwalle/ngx v1.0.0
+	github.com/smok-dev-team/form v1.0.3
+	github.com/smok-dev-team/ngx v1.0.4
 )

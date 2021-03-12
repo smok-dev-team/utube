@@ -1,7 +1,7 @@
 package utube
 
 import (
-	"github.com/smartwalle/form"
+	"github.com/smok-dev-team/form"
 	"net/url"
 	"strings"
 )

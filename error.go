@@ -2,7 +2,7 @@ package utube
 
 import (
 	"fmt"
-	"github.com/smartwalle/ngx"
+	"github.com/smok-dev-team/ngx"
 )
 
 type ResponseError struct {

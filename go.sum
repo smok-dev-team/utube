@@ -1,10 +1,6 @@
-github.com/go-sql-driver/mysql v1.4.1 h1:g24URVg0OFbNUTx9qqY1IRZ9D9z3iPyi5zKhQZpNwpA=
-github.com/go-sql-driver/mysql v1.4.1/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=
-github.com/smartwalle/binding v1.0.0 h1:jFZbkKN19zP6dZ0i7y/RNGRwDPvdN6tXbBp4B5iSly8=
-github.com/smartwalle/binding v1.0.0/go.mod h1:mLYtdHR4cKfwQv+CMYBOXBJjQjQMjqga/XcCDWWiWGk=
-github.com/smartwalle/dbs v1.0.0 h1:4UzPq/wfzDVZFpBKXO5yckGqOdhVX8RZ6qv8nUCpGC8=
-github.com/smartwalle/dbs v1.0.0/go.mod h1:sTVYj2+GAmxGxTF88LR38dc57SA5Pr9/Uk2EPztLidA=
-github.com/smartwalle/form v1.0.0 h1:0tC3l+wrd1NoTKPZ7nX3RTHEjs9SKR4fr1j7CrdmyxU=
-github.com/smartwalle/form v1.0.0/go.mod h1:Y3hwTe7y3YSYoz+TMdhlwI3V3eVRdCI0JC34L7ibXhE=
-github.com/smartwalle/ngx v1.0.0 h1:fBCvRGNM88s6quNn3fi65sFiEDQLaWU+w4MdVC7+fGU=
-github.com/smartwalle/ngx v1.0.0/go.mod h1:ml3CEnDnA94rNqRC9/lbflZNevlW+Cbgv6Gp8WDy6AU=
+github.com/smok-dev-team/binding v1.0.3 h1:AxBEcHNQPVknXKNqQEjYLioEAkU9CryR3hZmFcCh+uA=
+github.com/smok-dev-team/binding v1.0.3/go.mod h1:jlwgX6VmBjWBepauFjXPFyXt2487FAzkDaMHVuNkj+o=
+github.com/smok-dev-team/form v1.0.3 h1:/EWAU6LfqZ4zL7iVBIlUnmBZgce3pHotn4eTPVdQkb4=
+github.com/smok-dev-team/form v1.0.3/go.mod h1:4jefJ0hTYiwS78/aryKZdxCKquACw/qPeS/kwckmNfM=
+github.com/smok-dev-team/ngx v1.0.4 h1:Ce47DF9pr02lLUsG9H66p1l/85dG7GNv5/laE3aAPpU=
+github.com/smok-dev-team/ngx v1.0.4/go.mod h1:2+l3jm6fTtagIGwrfepNBEdKAjDw9ov9IDq6DR0QuXo=
